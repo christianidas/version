@@ -1,0 +1,27 @@
+{
+  "name": "version",
+  "version": "0.1.0",
+  "description": "Scripts to version npm projects",
+  "main": "index.js",
+  "bin": {
+    "version": "index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/christianidas/version.git"
+  },
+  "keywords": [
+    "npm",
+    "version",
+    "capacitor"
+  ],
+  "author": "christian.a.baird@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/christianidas/version/issues"
+  },
+  "homepage": "https://github.com/christianidas/version#readme"
+}
