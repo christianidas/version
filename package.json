@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/christianidas/version#readme",
   "dependencies": {
-    "semver": "^7.3.7"
+    "semver": "^7.3.7",
+    "shelljs": "^0.8.5"
   }
 }
