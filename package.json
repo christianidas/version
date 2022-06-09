@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/christianidas/version/issues"
   },
-  "homepage": "https://github.com/christianidas/version#readme"
+  "homepage": "https://github.com/christianidas/version#readme",
+  "dependencies": {
+    "semver": "^7.3.7"
+  }
 }
