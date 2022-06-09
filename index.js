@@ -11,7 +11,7 @@ const versionCapacitor = require('./version-capacitor');
 
       Usage:
 
-        $ version [<command>] [<version>] [--release|-r] [--prerelease|-p] [--no-git]
+        $ version [<version>] [args]
 
       Args:
 
