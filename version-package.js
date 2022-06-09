@@ -5,7 +5,7 @@ module.exports = ((params) => {
   const message = params.message;
   const noGit = params.noGit;
 
-  let script = `npm version ${version} --allow-same-version -f`;
+  let script = `npm version ${version} --allow-same-version -f --workspaces --include-workspace-root`;
   if (message) {
     script += ` -m "${message}"`;
   }
