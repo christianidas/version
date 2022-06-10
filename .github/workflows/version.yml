@@ -25,14 +25,14 @@ jobs:
       - name: Version
         if: github.ref == 'refs/heads/main'
         run: |
-          echo Version
+          npx version
 
       - name: Version Beta
         if: contains(github.ref, 'release/') || contains(github.ref, 'hotfix/')
         run: |
-          echo Version Beta
+          npx version -p beta
 
       - name: Version Alpha
         if: github.ref == 'refs/heads/develop'
         run: |
-          echo Version Alpha
+          npx version -r minor -p alpha
