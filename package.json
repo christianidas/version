@@ -1,5 +1,5 @@
 {
-  "name": "version",
+  "name": "@christianidas/version",
   "version": "0.0.0",
   "description": "Scripts to version npm projects",
   "main": "index.js",
