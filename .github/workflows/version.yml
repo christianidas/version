@@ -23,7 +23,7 @@ jobs:
         run: npm install
 
       - name: Version
-        if: ${GITHUB_REF#refs/heads/} == 'main'
+        if: '${GITHUB_REF#refs/heads/}' == 'main'
         run: |
           echo Version
 
@@ -33,7 +33,7 @@ jobs:
           echo Version Beta
 
       - name: Version Alpha
-        if: ${GITHUB_REF#refs/heads/} == 'develop'
+        if: '${GITHUB_REF#refs/heads/}' == 'develop'
         run: |
           echo Version Alpha
           echo ${GITHUB_REF#refs/heads/}
