@@ -28,7 +28,7 @@ jobs:
           echo Version
 
       - name: Version Beta
-        if: contains(${GITHUB_REF#refs/heads/}, 'release/') || contains(${GITHUB_REF#refs/heads/}, 'hotfix/')
+        if: contains('${GITHUB_REF#refs/heads/}', 'release/') || contains('${GITHUB_REF#refs/heads/}', 'hotfix/')
         run: |
           echo Version Beta
 
