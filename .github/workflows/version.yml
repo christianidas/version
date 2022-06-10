@@ -18,7 +18,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
-      - name: setup git config
+      - name: Setup Git Config
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
@@ -40,3 +40,7 @@ jobs:
         if: github.ref == 'refs/heads/develop'
         run: |
           npx version -r minor -p alpha
+
+      - name: Tag
+        run: |
+          git push && git push --tags
