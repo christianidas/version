@@ -23,17 +23,17 @@ jobs:
         run: npm install
 
       - name: Version
-        if: github.ref == 'refs/heads/main'
+        if: ${GITHUB_REF#refs/heads/} == 'main'
         run: |
           echo Version
 
       - name: Version Beta
-        if: github.ref == 'refs/heads/release'
+        if: contains(${GITHUB_REF#refs/heads/}, 'release/') || contains(${GITHUB_REF#refs/heads/}, 'hotfix/')
         run: |
           echo Version Beta
 
       - name: Version Alpha
-        if: github.ref == 'refs/heads/develop'
+        if: ${GITHUB_REF#refs/heads/} == 'develop'
         run: |
           echo Version Alpha
           echo ${GITHUB_REF#refs/heads/}
