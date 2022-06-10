@@ -4,6 +4,8 @@ const argv = require('yargs').argv;
 const calculateVersion = require('./calculate-version');
 const versionPackage = require('./version-package');
 const versionCapacitor = require('./version-capacitor');
+const versionIOS = require('./version-ios');
+const versionAndroid = require('./version-android');
 
 (() => {
   if ((argv._[0] && argv._[0] === 'help') || argv.help) {
@@ -11,7 +13,7 @@ const versionCapacitor = require('./version-capacitor');
 
       Usage:
 
-        $ version [<command>] [<version>] [--release|-r] [--prerelease|-p] [--no-git]
+        $ version [<version>] [args]
 
       Args:
 
@@ -21,6 +23,8 @@ const versionCapacitor = require('./version-capacitor');
         --no-git ................ Skip git commit and tag
         --allow-downgrade ....... Allow the version to be set to a lower prerelease
         --capacitor ............. Copy version to capacitor config file(s)
+        --ios-config ............ Path to iOS Info.plist file
+        --android-config ............ Path to iOS Info.plist file
 
     `;
     console.log(help);
@@ -40,6 +44,8 @@ const versionCapacitor = require('./version-capacitor');
   options.noGit = argv.git === false;
   options.allowDowngrade = !!argv.allowDowngrade;
   options.capacitor = !!argv.capacitor;
+  options.iosConfig = argv.iosConfig;
+  options.androidConfig = argv.androidConfig;
 
   if (options.prerelease && (typeof options.prerelease) === 'boolean') {
     options.prerelease = 'alpha';
@@ -49,6 +55,14 @@ const versionCapacitor = require('./version-capacitor');
 
   if (options.capacitor) {
     versionCapacitor(options);
+  }
+
+  if (options.iosConfig) {
+    versionIOS(options);
+  }
+
+  if (options.androidConfig) {
+    versionAndroid(options);
   }
 
   return versionPackage(options);
