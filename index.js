@@ -34,7 +34,7 @@ const versionAndroid = require('./version-android');
     return;
   }
 
-  const command = argv[0];
+  const command = argv._[0];
 
   const options = {};
 
