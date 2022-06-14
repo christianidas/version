@@ -26,20 +26,20 @@ jobs:
       - name: Download Dependencies
         run: npm install
 
-      - name: Version
-        if: github.ref == 'refs/heads/main'
+      - name: Version Alpha
+        if: github.ref == 'refs/heads/develop'
         run: |
-          npx version -m '[skip ci] %s'
+          npx version -r minor -p alpha -m '[skip ci] %s'
 
       - name: Version Beta
         if: contains(github.ref, 'release/') || contains(github.ref, 'hotfix/')
         run: |
           npx version -p beta -m '[skip ci] %s'
 
-      - name: Version Alpha
-        if: github.ref == 'refs/heads/develop'
+      - name: Version
+        if: github.ref == 'refs/heads/main'
         run: |
-          npx version -r minor -p alpha -m '[skip ci] %s'
+          npx version -m '[skip ci] %s'
 
       - name: Tag
         run: |
