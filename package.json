@@ -32,6 +32,6 @@
     "yargs": "^17.5.1"
   },
   "devDependencies": {
-    "@christianidas/version": "github:christianidas/version"
+    "@christianidas/version": "file:."
   }
 }
