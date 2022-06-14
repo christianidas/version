@@ -29,17 +29,17 @@ jobs:
       - name: Version
         if: github.ref == 'refs/heads/main'
         run: |
-          npx version
+          npx version -m '[skip ci] %s'
 
       - name: Version Beta
         if: contains(github.ref, 'release/') || contains(github.ref, 'hotfix/')
         run: |
-          npx version -p beta
+          npx version -p beta -m '[skip ci] %s'
 
       - name: Version Alpha
         if: github.ref == 'refs/heads/develop'
         run: |
-          npx version -r minor -p alpha
+          npx version -r minor -p alpha -m '[skip ci] %s'
 
       - name: Tag
         run: |
