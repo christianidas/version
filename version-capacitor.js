@@ -1,9 +1,13 @@
 const versionIOS = require('./version-ios');
+const versionAndroid = require('./version-android');
 
 module.exports = ((params) => {
-  const iosConfig = params.iosConfig || './ios/App/App/Info.plist';
-  return versionIOS({
+  versionIOS({
     ...params,
-    iosConfig,
-  })
+    iosConfig: params.iosConfig || './ios/App/App/Info.plist',
+  });
+  versionAndroid({
+    ...params,
+    androidConfig: params.androidConfig || './android/app/build.gradle',
+  });
 });
