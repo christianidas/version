@@ -13,23 +13,28 @@ const versionAndroid = require('./version-android');
 
       Usage:
 
-        $ version [<version>] [args]
+        $ version [command] [version] [args]
 
       Args:
 
-        version ................. Exact version
+        command ................. capacitor|ios|android (Optional. Leave blank to version package)
+        version ................. Exact version (Optional. Leave blank to calculat version)
+
         --release|-r ............ Release type (major|minor|patch) (Default: 'patch')
         --prerelease|-p ......... Prerelease tag (Any alphanumeric string) (Default: 'alpha')
+        --message|-m ............ Message to be used for git commit
         --no-git ................ Skip git commit and tag
         --allow-downgrade ....... Allow the version to be set to a lower prerelease
         --capacitor ............. Copy version to capacitor config file(s)
         --ios-config ............ Path to iOS Info.plist file
-        --android-config ............ Path to iOS Info.plist file
+        --android-config ........ Path to Android build.gradle file
 
     `;
     console.log(help);
     return;
   }
+
+  const command = argv[0];
 
   const options = {};
 
@@ -51,19 +56,18 @@ const versionAndroid = require('./version-android');
     options.prerelease = 'alpha';
   }
 
-  options.version = argv._[0] || calculateVersion(options);
-
-  if (options.capacitor) {
-    versionCapacitor(options);
+  switch (command) {
+    case 'capacitor':
+      options.version = argv._[1] || calculateVersion(options);
+      return versionCapacitor(options);
+    case 'ios':
+      options.version = argv._[1] || calculateVersion(options);
+      return versionIOS(options);
+    case 'android':
+      options.version = argv._[1] || calculateVersion(options);
+      return versionAndroid(options);
+    default:
+      options.version = command || calculateVersion(options);
+      return versionPackage(options);
   }
-
-  if (options.iosConfig) {
-    versionIOS(options);
-  }
-
-  if (options.androidConfig) {
-    versionAndroid(options);
-  }
-
-  return versionPackage(options);
 })();
