@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  version:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
